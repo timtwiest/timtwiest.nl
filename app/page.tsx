@@ -8,7 +8,7 @@ export default function Home() {
       <div className="space-y-1 pt-6">
         <h2 className="font-heading text-xl">Who</h2>
         <p className="text-muted-foreground">
-          I'm a full-stack developer, currently working at{' '}
+          I&apos;m a full-stack developer, currently working at{' '}
           <Link
             href="https://pancompany.com"
             className="font-medium hover:underline hover:underline-offset-4"
