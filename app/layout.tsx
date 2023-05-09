@@ -6,6 +6,7 @@ import { Analytics } from '@/components/analytics';
 import { ModeToggle } from '@/components/mode-toggle';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
+import { ReactNode } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
