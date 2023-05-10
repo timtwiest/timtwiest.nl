@@ -6,23 +6,9 @@ export default function Home() {
   return (
     <div className="container flex flex-col space-y-6 divide-y">
       <div className="space-y-1 pt-6">
-        <h2 className="font-heading text-xl">Who</h2>
+        <h2 className="font-heading text-xl">Posts</h2>
         <p className="text-muted-foreground">
-          I&apos;m a full-stack developer, currently working at{' '}
-          <Link
-            href="https://pancompany.com"
-            className="font-medium hover:underline hover:underline-offset-4"
-            target="_blank"
-          >
-            PanCompany &#8599;
-          </Link>
-          .
-        </p>
-      </div>
-      <div className="space-y-1 pt-6">
-        <h2 className="font-heading text-xl">Notes</h2>
-        <p className="text-muted-foreground">
-          Notes on things you can do on your computer.
+          Posts on things you can do on your computer.
         </p>
         <div className="space-y-4 py-4">
           {allPosts.map((post) => (
@@ -38,6 +24,26 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </div>
+      <div className="space-y-1 pt-6">
+        <h2 className="font-heading text-xl">Projects</h2>
+        <p className="text-muted-foreground">What do I do on the web</p>
+        <ul className="space-y-4 py-4">
+          <li>
+            <Link
+              className="flex flex-col space-y-1.5 !no-underline"
+              href="https://lagoons.io"
+              target="_blank"
+            >
+              <span className="font-medium underline underline-offset-4 ">
+                Lagoons.io
+              </span>
+              <span className="text-muted-foreground">
+                Coming soon, stay tuned!
+              </span>
+            </Link>
+          </li>
+        </ul>
       </div>
       <div className="space-y-1 pt-6">
         <h2 className="font-heading text-xl">Links</h2>

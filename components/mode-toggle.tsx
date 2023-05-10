@@ -2,19 +2,9 @@
 
 import { useTheme } from 'next-themes';
 import { Icons } from '@/components/icons';
-import { useEffect, useState } from 'react';
 
 export function ModeToggle() {
-  const [mounted, setMounted] = useState<boolean>(false);
   const { setTheme, theme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <button
@@ -22,7 +12,8 @@ export function ModeToggle() {
       className="flex h-6 w-6 items-center justify-center rounded-md border"
     >
       <span className="sr-only">Toggle mode</span>
-      {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
+      <Icons.sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Icons.moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
     </button>
   );
 }

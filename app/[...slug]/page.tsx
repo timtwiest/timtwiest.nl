@@ -13,7 +13,7 @@ interface PostProps {
 
 async function getPostFromParams(params: PostProps['params']) {
   const slug = params?.slug?.join('/');
-  const post = allPosts.find((post) => post.slugAsParams === slug);
+  const post = allPosts.find((post) => post.slug.replace('/', '') === slug);
 
   if (!post) {
     return null;
@@ -35,12 +35,6 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
   };
-}
-
-export async function generateStaticParams(): Promise<PostProps['params'][]> {
-  return allPosts.map((post) => ({
-    slug: post.slugAsParams.split('/'),
-  }));
 }
 
 export default async function PostPage({ params }: PostProps) {
