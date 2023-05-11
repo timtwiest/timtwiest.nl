@@ -1,15 +1,15 @@
 import { allPosts } from '@/.contentlayer/generated';
 import Link from 'next/link';
 import { socialLinks } from '@/config/site';
+import { SectionItem } from '@/components/section-item';
 
 export default function Home() {
   return (
     <div className="container flex flex-col space-y-6 divide-y">
-      <div className="space-y-1 pt-6">
-        <h2 className="font-heading text-xl">Posts</h2>
-        <p className="text-muted-foreground">
-          Posts on things you can do on your computer.
-        </p>
+      <SectionItem
+        title="Posts"
+        description="Posts on things you can do on your computer."
+      >
         <div className="space-y-4 py-4">
           {allPosts.map((post) => (
             <article key={post._id}>
@@ -24,10 +24,8 @@ export default function Home() {
             </article>
           ))}
         </div>
-      </div>
-      <div className="space-y-1 pt-6">
-        <h2 className="font-heading text-xl">Projects</h2>
-        <p className="text-muted-foreground">What do I do on the web</p>
+      </SectionItem>
+      <SectionItem title="Projects" description="What do I do on the web">
         <ul className="space-y-4 py-4">
           <li>
             <Link
@@ -44,10 +42,8 @@ export default function Home() {
             </Link>
           </li>
         </ul>
-      </div>
-      <div className="space-y-1 pt-6">
-        <h2 className="font-heading text-xl">Links</h2>
-        <p className="text-muted-foreground">Where do I hang out?</p>
+      </SectionItem>
+      <SectionItem title="Links" description="Where do I hang out?">
         <ul className="space-y-4 py-4">
           {Object.entries(socialLinks).map(([key, value]) => (
             <li key={key}>
@@ -62,7 +58,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </div>
+      </SectionItem>
     </div>
   );
 }
