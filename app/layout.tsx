@@ -38,7 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={`min-h-screen bg-background font-sans text-[0.9rem] antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="mx-auto max-w-2xl px-4 py-10">
+          <div className="mx-auto max-w-2xl px-4 py-8">
             <header className="container">
               <div className="flex items-center justify-between border-b py-4">
                 <div className="flex items-center space-x-2">
