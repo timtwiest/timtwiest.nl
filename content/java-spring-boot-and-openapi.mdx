@@ -1,8 +1,105 @@
 ---
 title: Java Spring Boot and OpenAPI
-description: Integrate OpenAPI into a Java Spring Boot application
+description: Integrate OpenAPI into a Java Spring Boot Rest API
 date: '2023-04-10'
 ---
+
+- [Setup](#setup)
+
+## Setup
+
+Our first step is to create the root module. This cornerstone module functions as the parent, housing the dependencies shared across all other modules. By centralizing these dependencies, we streamline our development process and ensure consistency across the project.
+
+In this Spring Boot application, the common dependencies you'll find in our root module include:
+
+- Spring Boot: The core framework for building standalone, production-grade Spring based applications.
+- Spring Web: A module for creating web applications.
+- Spring Test: A framework for testing Spring applications.
+- Lombok: A Java library that helps to reduce boilerplate code.
+
+Let's take a look at the Maven `pom.xml` configuration for our root module:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.9</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>nl.timtwiest</groupId>
+  <artifactId>spring-boot-rest-api-and-openapi</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <!--  Maven Project/Build Settings  -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <java.version>17</java.version>
+
+    <!--  Maven Version Management  -->
+    <version.lombok>1.18.24</version.lombok>
+  </properties>
+
+  <dependencies>
+    <!--  General Dependencies  -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${version.lombok}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!--  Spring Dependencies  -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+With the root module established, our next move is to create two additional directories within our project.
+These will serve as distinct modules named ws and api.
+
+Here is what you should do:
+
+- Create two directories named spring-boot-rest-api-with-openapi-api and spring-boot-rest-api-with-openapi-ws in your project root.
+- The `api` module is where we'll define our OpenAPI specification
+- The `ws` module, on the other hand, will be responsible for implementing these interfaces and managing our web services.
+
+Once these directories are created, we need to declare these new modules in our root `pom.xml` file.
+This informs Maven about the hierarchical structure of our project and the interdependencies of our modules.
+
+Let's declare our modules as follows:
+
+```xml
+<modules>
+    <module>spring-boot-rest-api-with-openapi-api</module>
+    <module>spring-boot-rest-api-with-openapi-ws</module>
+</modules>
+```
+
+With this configuration in place, we can now begin to define our OpenAPI specification.
+
+## Create the API module
 
 ```yaml
 openapi: 3.0.3
@@ -14,4 +111,4 @@ servers:
 # ...
 ```
 
-Lorum ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.
+## Create the Web module
