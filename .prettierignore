@@ -1,6 +1,0 @@
-dist/**
-/coverage
-public/**
-node_modules/**
-.next
-*.log
