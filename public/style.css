@@ -1,6 +1,7 @@
 :root {
     --color-background: 240 10% 3.9%;
     --color-foreground: 0 0% 98%;
+    --color-text: 240 5% 64.9%;
     --font-size-base: 1rem;
     --font-size-title: 1.125rem;
     --spacing-base: 2rem;
@@ -63,6 +64,12 @@ body {
     line-height: 1.75rem;
 }
 
+.logo-links {
+    display: flex;
+    align-items: center;
+    font-size: 1.025rem;
+}
+
 .container-main {
     flex: 1 1 auto;
 }
@@ -81,6 +88,35 @@ body {
     font-family: var(--font-mono);
     font-weight: normal;
     font-size: 1.025rem;
+}
+
+.text-color {
+    color: hsl(var(--color-text));
+}
+
+.text-link {
+    text-decoration: underline dotted;
+    color: inherit;
+    font-style: italic;
+}
+
+.wave {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+    10% { transform: rotate(14.0deg) }
+    20% { transform: rotate(-8.0deg) }
+    30% { transform: rotate(14.0deg) }
+    40% { transform: rotate(-4.0deg) }
+    50% { transform: rotate(10.0deg) }
+    60% { transform: rotate( 0.0deg) }
+    100% { transform: rotate( 0.0deg) }
 }
 
 @media (min-width: 640px) {
