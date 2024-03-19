@@ -10,6 +10,8 @@
 }
 
 *, *::before, *::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -58,16 +60,21 @@ body {
     font-size: var(--font-size-base);
 }
 
-.logo-title, .subtitle {
+.logo-title {
     font-weight: 700;
     font-size: var(--font-size-title);
+    line-height: 1.75rem;
+}
+
+.logo-subtitle {
+    font-size: 0.9rem;
     line-height: 1.75rem;
 }
 
 .logo-links {
     display: flex;
     align-items: center;
-    font-size: 1.025rem;
+    font-size: 1.325rem;
 }
 
 .container-main {
