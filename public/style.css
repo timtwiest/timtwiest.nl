@@ -134,6 +134,10 @@ body {
     font-style: italic;
 }
 
+a[target="_blank"]::after {
+    content: " ↗";
+}
+
 @keyframes wave-animation {
     0% { transform: rotate(0.0deg) }
     10% { transform: rotate(14.0deg) }
