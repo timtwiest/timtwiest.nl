@@ -1,12 +1,21 @@
 :root {
     --color-background: 0 0% 100%;
     --color-foreground: 240 10% 3.9%;
+    --color-link: 240, 100%, 47%;
     --font-size-base: 0.9rem;
     --font-size-title: 1.175rem;
     --spacing-base: 2rem;
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 1.5rem;
 
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --line-height-base: 1.75rem;
+    --line-height-small: 1.25rem;
+    --line-height-title: 1.75rem;
 }
 
 *, *::before, *::after {
@@ -18,6 +27,7 @@
 body {
     font-size: var(--font-size-base);
     color: hsl(var(--color-foreground));
+    background-color: hsl(var(--color-background));
     -webkit-font-smoothing: antialiased;
     font-family: var(--font-sans), serif;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -25,8 +35,8 @@ body {
 }
 
 .page-layout {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: var(--spacing-base);
+    padding-bottom: var(--spacing-base);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -34,25 +44,25 @@ body {
 
 .site-header {
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 var(--spacing-base);
 }
 
 .header-content {
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    gap: .5rem;
+    gap: var(--spacing-small);
     align-items: center;
     display: flex;
 }
 
 .nav-link {
-    gap: .5rem;
+    gap: var(--spacing-small);
     align-items: center;
     display: flex;
 }
 
 a {
-    color: #00e;
+    color: hsl(var(--color-link));
     text-decoration: underline;
     text-underline-offset: 4px;
 }
@@ -66,33 +76,51 @@ a {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 var(--spacing-base);
 }
 
 .content-article {
-    padding-top: 1.5rem;
+    padding-top: var(--spacing-large);
 }
 
 .article-header {
-    padding: 1rem 0;
+    padding: var(--spacing-medium) 0;
 }
 
 .article-title {
-    letter-spacing: -.05em;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    letter-spacing: -0.05em;
+    font-size: var(--font-size-title);
+    line-height: var(--line-height-title);
+    font-weight: var(--font-weight-regular);
     font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .article-body {
     font-size: .875rem;
-    line-height: 1.25rem;
+    line-height: var(--line-height-small);
 }
 
-.projects {
-    gap: .25rem;
-    align-items: flex-start;
-    display: grid;
+.projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
+}
+
+.project-title {
+    font-weight: var(--font-weight-medium);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.project-description {
+    font-size: .875rem;
+    line-height: var(--line-height-small);
 }
 
 .styled-link[target="_blank"]::after,
