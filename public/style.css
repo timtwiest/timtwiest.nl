@@ -133,7 +133,8 @@ a:focus-visible,
 }
 
 .theme-icon-moon {
-    stroke-width: 2.25;
+    fill: currentColor;
+    stroke: none;
 }
 
 .main-content {
