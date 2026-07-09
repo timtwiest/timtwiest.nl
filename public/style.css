@@ -4,6 +4,7 @@
     --color-foreground: 240 10% 3.9%;
     --color-border: 240 5.9% 90%;
     --color-link: 240, 100%, 47%;
+    --color-theme-toggle: 221 83% 53%;
     --font-size-base: 0.9rem;
     --font-size-title: 1.175rem;
     --spacing-base: 2rem;
@@ -30,6 +31,7 @@
     --color-foreground: 0 0% 93%;
     --color-border: 0 0% 24%;
     --color-link: 210 100% 72%;
+    --color-theme-toggle: 45 93% 58%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,6 +40,7 @@
         --color-foreground: 0 0% 93%;
         --color-border: 0 0% 24%;
         --color-link: 210 100% 72%;
+        --color-theme-toggle: 45 93% 58%;
     }
 }
 
@@ -106,7 +109,7 @@ a:focus-visible,
 
 .theme-toggle {
     border: 0;
-    color: hsl(var(--color-link));
+    color: hsl(var(--color-theme-toggle));
     background: transparent;
     width: 1.25rem;
     height: 1.25rem;
@@ -118,19 +121,19 @@ a:focus-visible,
 .theme-icon {
     width: 1rem;
     height: 1rem;
-    fill: currentColor;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
 }
 
 .theme-icon[hidden] {
     display: none;
 }
 
-.theme-icon-sun {
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 2;
+.theme-icon-moon {
+    stroke-width: 2.25;
 }
 
 .main-content {
