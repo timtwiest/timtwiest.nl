@@ -7,12 +7,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
           rel="stylesheet">
-    <link href="public/style.css?v=20260709-dark" rel="stylesheet">
+    <script>
+        (() => {
+            let savedTheme;
+
+            try {
+                savedTheme = localStorage.getItem('theme');
+            } catch {
+                savedTheme = null;
+            }
+
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                document.documentElement.dataset.theme = savedTheme;
+            }
+        })();
+    </script>
+    <link href="public/style.css?v=20260709-toggle" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>tim twiest</title>
     <link rel="canonical" href="https://timtwiest.nl/">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff">
     <meta name="description" content="Tim Twiest is a Senior IT Consultant creating fun through technology">
     <meta name="keywords"
           content="tim twiest, senior it consultant, it project management, software development, system architecture">
@@ -30,6 +44,8 @@
         <span class="nav-separator" aria-hidden="true">&#47;</span>
         <a class="nav-link" target="_blank" rel="noopener noreferrer"
            href="https://www.linkedin.com/in/timtwiest/">linkedin</a>
+        <span class="nav-separator" aria-hidden="true">&#47;</span>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">dark</button>
     </nav>
 </header>
 <main class="main-content">
@@ -72,5 +88,46 @@
         </section>
     </div>
 </main>
+<script>
+    (() => {
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function getActiveTheme() {
+            return document.documentElement.dataset.theme || (darkModeQuery.matches ? 'dark' : 'light');
+        }
+
+        function syncThemeToggle() {
+            const activeTheme = getActiveTheme();
+
+            themeToggle.textContent = activeTheme === 'dark' ? 'light' : 'dark';
+            themeToggle.setAttribute('aria-pressed', String(activeTheme === 'dark'));
+            themeColor.setAttribute('content', activeTheme === 'dark' ? '#111111' : '#ffffff');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = getActiveTheme() === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.dataset.theme = nextTheme;
+
+            try {
+                localStorage.setItem('theme', nextTheme);
+            } catch {
+                // Keep the selected theme for this page view when storage is unavailable.
+            }
+
+            syncThemeToggle();
+        });
+
+        darkModeQuery.addEventListener('change', () => {
+            if (!document.documentElement.dataset.theme) {
+                syncThemeToggle();
+            }
+        });
+
+        syncThemeToggle();
+    })();
+</script>
 </body>
 </html>
