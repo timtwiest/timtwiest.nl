@@ -111,16 +111,16 @@ a:focus-visible,
     border: 0;
     color: hsl(var(--color-theme-toggle));
     background: transparent;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     padding: 0;
     justify-content: center;
     cursor: pointer;
 }
 
 .theme-icon {
-    width: 1rem;
-    height: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
@@ -133,8 +133,16 @@ a:focus-visible,
 }
 
 .theme-icon-moon {
-    fill: currentColor;
+    fill: none;
     stroke: none;
+}
+
+.moon-disc {
+    fill: currentColor;
+}
+
+.moon-crater {
+    fill: hsl(var(--color-background));
 }
 
 .main-content {

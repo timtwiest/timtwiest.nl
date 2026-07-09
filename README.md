@@ -9,7 +9,13 @@ might add more complex features and even use frameworks like Next.js, React, Rem
 To view or contribute to the project:
 
 1. Clone the repository.
-2. Open `index.html` in a browser.
+2. Start a local server:
+
+   ```sh
+   python3 -m http.server 8001
+   ```
+
+3. Open `http://localhost:8001` in a browser.
 
 ## Contribute
 
