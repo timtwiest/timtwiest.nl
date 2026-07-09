@@ -1,4 +1,5 @@
 :root {
+    color-scheme: light dark;
     --color-background: 0 0% 100%;
     --color-foreground: 240 10% 3.9%;
     --color-border: 240 5.9% 90%;
@@ -17,6 +18,15 @@
     --line-height-base: 1.75rem;
     --line-height-small: 1.25rem;
     --line-height-title: 1.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: 0 0% 6.7%;
+        --color-foreground: 0 0% 93%;
+        --color-border: 0 0% 24%;
+        --color-link: 210 100% 72%;
+    }
 }
 
 *, *::before, *::after {
