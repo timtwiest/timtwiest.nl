@@ -108,10 +108,29 @@ a:focus-visible,
     border: 0;
     color: hsl(var(--color-link));
     background: transparent;
-    font: inherit;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    justify-content: center;
     cursor: pointer;
+}
+
+.theme-icon {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+}
+
+.theme-icon[hidden] {
+    display: none;
+}
+
+.theme-icon-sun {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
 }
 
 .main-content {

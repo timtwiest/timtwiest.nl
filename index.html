@@ -22,7 +22,7 @@
             }
         })();
     </script>
-    <link href="public/style.css?v=20260709-toggle" rel="stylesheet">
+    <link href="public/style.css?v=20260709-icons" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>tim twiest</title>
     <link rel="canonical" href="https://timtwiest.nl/">
@@ -45,7 +45,15 @@
         <a class="nav-link" target="_blank" rel="noopener noreferrer"
            href="https://www.linkedin.com/in/timtwiest/">linkedin</a>
         <span class="nav-separator" aria-hidden="true">&#47;</span>
-        <button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">dark</button>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5a8 8 0 1 0 12 12z"/>
+            </svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" hidden>
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/>
+            </svg>
+        </button>
     </nav>
 </header>
 <main class="main-content">
@@ -100,8 +108,13 @@
 
         function syncThemeToggle() {
             const activeTheme = getActiveTheme();
+            const showSun = activeTheme === 'dark';
+            const moonIcon = themeToggle.querySelector('.theme-icon-moon');
+            const sunIcon = themeToggle.querySelector('.theme-icon-sun');
 
-            themeToggle.textContent = activeTheme === 'dark' ? 'light' : 'dark';
+            moonIcon.toggleAttribute('hidden', showSun);
+            sunIcon.toggleAttribute('hidden', !showSun);
+            themeToggle.setAttribute('aria-label', showSun ? 'Switch to light mode' : 'Switch to dark mode');
             themeToggle.setAttribute('aria-pressed', String(activeTheme === 'dark'));
             themeColor.setAttribute('content', activeTheme === 'dark' ? '#111111' : '#ffffff');
         }
