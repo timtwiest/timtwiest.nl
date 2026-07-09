@@ -3,69 +3,70 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap"
-          rel="preload"
-          as="style"
-          crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
-          rel="preload"
-          as="style"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
+          rel="stylesheet">
     <link href="public/style.css" rel="stylesheet">
     <title>tim twiest</title>
     <link rel="canonical" href="https://timtwiest.nl/">
-    <meta name="description" content="Tim Twiest a Senior IT Consultant creating fun through technology">
+    <meta name="description" content="Tim Twiest is a Senior IT Consultant creating fun through technology">
     <meta name="keywords"
           content="tim twiest, senior it consultant, it project management, software development, system architecture">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://timtwiest.nl/">
     <meta property="og:title" content="Tim Twiest - Senior IT Consultant">
-    <meta property="og:description" content="Tim Twiest a Senior IT Consultant creating fun through technology">
+    <meta property="og:description" content="Tim Twiest is a Senior IT Consultant creating fun through technology">
 </head>
-<body class="page-layout">
+<body class="site-shell">
 <header class="site-header">
-    <div class="header-content">
+    <nav class="site-nav" aria-label="Primary navigation">
         <a class="nav-link" href="/">timtwiest</a>
-        &#47;
-        <a class="nav-link" target="_blank" rel="noreferrer" href="https://github.com/timtwiest">github</a>
-        &#47;
-        <a class="nav-link" target="_blank" rel="noreferrer"
+        <span class="nav-separator" aria-hidden="true">&#47;</span>
+        <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/timtwiest">github</a>
+        <span class="nav-separator" aria-hidden="true">&#47;</span>
+        <a class="nav-link" target="_blank" rel="noopener noreferrer"
            href="https://www.linkedin.com/in/timtwiest/">linkedin</a>
-    </div>
+    </nav>
 </header>
 <main class="main-content">
-    <div class="content-container">
-        <article class="content-article">
-            <div class="article-header">
-                <h2 class="article-title">who am i</h2>
+    <div class="content-stack">
+        <section class="content-section" aria-labelledby="about-title">
+            <div class="section-header profile-header">
+                <img class="profile-image"
+                     src="https://github.com/timtwiest.png?size=160"
+                     alt="Tim Twiest"
+                     width="64"
+                     height="64">
+                <h1 class="section-title" id="about-title">who am i</h1>
             </div>
-            <div class="article-body">
+            <p class="section-body">
                 I am a senior tech consultant who has worked with various organizations and companies. I work with a
                 wide range of technologies, including Java, Node.js, C++, Python, Kubernetes, AWS, and more. I create,
                 break, and fix things. I am also exploring ecommerce projects.
-            </div>
-        </article>
-        <article class="content-article">
-            <div class="article-header">
-                <h2 class="article-title">projects</h2>
+            </p>
+        </section>
+        <section class="content-section" aria-labelledby="projects-title">
+            <div class="section-header">
+                <h2 class="section-title" id="projects-title">projects</h2>
             </div>
             <ul class="projects-list">
                 <li class="project-item">
-                    <a class="project-title" href="#" target="_blank">timtwiest/mastercontrol</a>
-                    <span class="project-description">Too be continued</span>
+                    <span class="project-title">timtwiest/mastercontrol</span>
+                    <span class="project-description">To be continued.</span>
                 </li>
                 <li class="project-item">
-                    <a class="project-title" href="#" target="_blank">timtwiest/timtwiest.nl</a>
+                    <a class="project-title" href="https://github.com/timtwiest/timtwiest.nl" target="_blank"
+                       rel="noopener noreferrer">timtwiest/timtwiest.nl</a>
                     <span class="project-description">This site.</span>
                 </li>
                 <li class="project-item">
-                    <a class="project-title" href="https://github.com/timtwiest/simple-java-api" target="_blank">timtwiest/simple-java-api</a>
+                    <a class="project-title" href="https://github.com/timtwiest/simple-java-api" target="_blank"
+                       rel="noopener noreferrer">timtwiest/simple-java-api</a>
                     <span class="project-description">a simple Java API boilerplate written with Spring boot and OpenAPI.</span>
                 </li>
             </ul>
-        </article>
+        </section>
     </div>
 </main>
 </body>
