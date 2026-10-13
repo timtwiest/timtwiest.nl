@@ -18,7 +18,245 @@
             }
         })();
     </script>
-    <link href="public/style.css?v=20261013-performance-seo" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light dark;
+            --color-background: 0 0% 100%;
+            --color-foreground: 240 10% 3.9%;
+            --color-border: 240 5.9% 90%;
+            --color-link: 240, 100%, 47%;
+            --font-size-base: 0.9rem;
+            --font-size-title: 1.175rem;
+            --spacing-base: 2rem;
+            --spacing-small: 0.5rem;
+            --spacing-medium: 1rem;
+            --spacing-large: 1.5rem;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --line-height-base: 1.75rem;
+            --line-height-small: 1.25rem;
+            --line-height-title: 1.75rem;
+        }
+
+        :root[data-theme="light"] {
+            color-scheme: light;
+        }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --color-background: 0 0% 6.7%;
+            --color-foreground: 0 0% 93%;
+            --color-border: 0 0% 24%;
+            --color-link: 210 100% 72%;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme]) {
+                --color-background: 0 0% 6.7%;
+                --color-foreground: 0 0% 93%;
+                --color-border: 0 0% 24%;
+                --color-link: 210 100% 72%;
+            }
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            color: hsl(var(--color-foreground));
+            background-color: hsl(var(--color-background));
+            -webkit-font-smoothing: antialiased;
+            font-family: var(--font-sans);
+            font-feature-settings: "rlig" 1, "calt" 1;
+            min-height: 100vh;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .site-shell {
+            padding-top: var(--spacing-base);
+            padding-bottom: var(--spacing-base);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .site-header {
+            width: 100%;
+            padding: 0 var(--spacing-base);
+        }
+
+        .site-nav {
+            font-weight: var(--font-weight-medium);
+            font-family: var(--font-mono);
+            gap: var(--spacing-small);
+            align-items: center;
+            display: flex;
+        }
+
+        .nav-link,
+        .nav-separator,
+        .theme-toggle {
+            gap: var(--spacing-small);
+            align-items: center;
+            display: flex;
+        }
+
+        .nav-link {
+            gap: 0;
+        }
+
+        a {
+            color: hsl(var(--color-link));
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        a[target="_blank"]:not(.nav-link)::after {
+            content: "";
+            display: inline-block;
+            width: .75em;
+            height: .75em;
+            margin-left: .25em;
+            background-color: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 17 17 7M7 7h10v10' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 17 17 7M7 7h10v10' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+        }
+
+        a:focus-visible,
+        .theme-toggle:focus-visible {
+            outline: 2px solid hsl(var(--color-link));
+            outline-offset: 3px;
+        }
+
+        .theme-toggle {
+            border: 1px solid hsl(var(--color-border));
+            border-radius: 50%;
+            color: hsl(var(--color-foreground));
+            background-color: hsl(var(--color-background));
+            width: 1.875rem;
+            height: 1.875rem;
+            padding: 0;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 150ms ease, background-color 150ms ease;
+        }
+
+        @media (hover: hover) {
+            .theme-toggle:hover {
+                border-color: hsl(var(--color-link) / .45);
+                background-color: hsl(var(--color-link) / .08);
+            }
+        }
+
+        .theme-icon {
+            width: 1rem;
+            height: 1rem;
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2;
+        }
+
+        .theme-icon[hidden] {
+            display: none;
+        }
+
+        .main-content {
+            flex: 1 1 0%;
+            font-family: var(--font-mono);
+        }
+
+        .content-stack {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 var(--spacing-base);
+        }
+
+        .content-section {
+            padding-top: var(--spacing-large);
+        }
+
+        .section-header {
+            padding: var(--spacing-medium) 0;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-medium);
+        }
+
+        .profile-image {
+            width: 4rem;
+            height: 4rem;
+            flex: 0 0 auto;
+            border: 1px solid hsl(var(--color-border));
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            letter-spacing: 0;
+            font-size: var(--font-size-title);
+            line-height: var(--line-height-title);
+            font-weight: var(--font-weight-regular);
+            font-family: var(--font-mono);
+        }
+
+        .section-body {
+            font-size: .875rem;
+            line-height: var(--line-height-small);
+        }
+
+        .projects-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-medium);
+        }
+
+        .project-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-small);
+        }
+
+        .project-title {
+            font-weight: var(--font-weight-medium);
+        }
+
+        a.project-title {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .project-description {
+            font-size: .875rem;
+            line-height: var(--line-height-small);
+        }
+
+        @media (min-width: 32rem) {
+            .site-header,
+            .main-content {
+                max-width: 32rem;
+            }
+        }
+    </style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>Tim Twiest | Senior Tech Consultant</title>
     <link rel="canonical" href="https://timtwiest.nl/">
