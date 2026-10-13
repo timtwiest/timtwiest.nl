@@ -197,6 +197,9 @@ a:focus-visible,
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
 }
 
 .project-item {
